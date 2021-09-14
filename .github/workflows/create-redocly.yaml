@@ -1,9 +1,10 @@
 name: create-redocly
 
-# Run on each push to master
 on:
   push:
-    branches: [ master ]
+    branches:
+      - main  # Set a branch name to trigger deployment
+  pull_request:
 
 jobs:
   test_job:
