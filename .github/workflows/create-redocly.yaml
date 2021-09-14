@@ -43,3 +43,10 @@ jobs:
         run: |
           ls -al
           test -f petstore.html || (echo "Missing petstore.html from previous step." && exit 1)
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: Joseph Rios
+          author_email: mail@example.com
+          message: 'Automated commit via create-redocly'
+          add: '*.html'
