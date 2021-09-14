@@ -1,4 +1,4 @@
-name: test-deploy
+name: create-redocly
 
 # Run on each push to master
 on:
