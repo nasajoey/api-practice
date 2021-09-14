@@ -8,24 +8,6 @@ on:
 
 jobs:
 
-  test_job:
-    runs-on: ubuntu-latest
-    name: Testing public name
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      # use the public name of the action
-      - name: redoc-cli test
-        uses: seeebiii/redoc-cli-github-action@v10
-        with:
-          args: 'bundle utm.yaml -o petstore.html'
-
-      - name: check result
-        run: |
-          ls -al
-          test -f petstore.html || (echo "Missing petstore.html from previous step." && exit 1)
-
   generate_html:
     runs-on: ubuntu-latest
     name: Generate static HTML
@@ -37,12 +19,12 @@ jobs:
       - name: redoc-cli
         uses: seeebiii/redoc-cli-github-action@v10
         with:
-          args: 'bundle utm.yaml -o petstore.html'
+          args: 'bundle utm.yaml -o utm.html'
 
       - name: check result
         run: |
           ls -al
-          test -f petstore.html || (echo "Missing petstore.html from previous step." && exit 1)
+          test -f utm.html || (echo "Missing utm.html from previous step." && exit 1)
       - name: Commit changes
         uses: EndBug/add-and-commit@v7
         with:
@@ -50,3 +32,10 @@ jobs:
           author_email: mail@example.com
           message: 'Automated commit via create-redocly'
           add: '*.html'
+          
+      - name: deploy static page
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          destination_dir: subdir
+          publish_dir: ./public
