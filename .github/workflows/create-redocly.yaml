@@ -26,22 +26,12 @@ jobs:
           ls -al
           test -f utm.html || (echo "Missing utm.html from previous step." && exit 1)
       
-  #    - name: Commit changes
-  #      uses: EndBug/add-and-commit@v7
-  #      with:
-  #        committer_name: create-redocly-action
-  #        message: 'Automated commit via create-redocly'
-  #        branch: gh-pages
-  #        add: utm.html
-  #        push: true
-      - name: Commit files
-        run: |
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git commit -m "Add changes" -a
-      - name: Push changes
-        uses: ad-m/github-push-action@master
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v7
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          committer_name: create-redocly-action
+          message: 'Automated commit via create-redocly'
           branch: gh-pages
-          
+          add: utm.html
+          push: true
+
