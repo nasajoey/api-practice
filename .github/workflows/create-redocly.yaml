@@ -25,17 +25,12 @@ jobs:
         run: |
           ls -al
           test -f utm.html || (echo "Missing utm.html from previous step." && exit 1)
+      
       - name: Commit changes
         uses: EndBug/add-and-commit@v7
         with:
           author_name: Joseph Rios
           author_email: mail@example.com
           message: 'Automated commit via create-redocly'
+          branch: gh-pages
           add: '*.html'
-          
-      - name: deploy static page
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          destination_dir: subdir
-          publish_dir: ./public
