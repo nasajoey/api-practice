@@ -21,17 +21,12 @@ jobs:
       - name: redoc-cli
         uses: seeebiii/redoc-cli-github-action@v10
         with:
-          args: 'bundle utm.yaml -o utm.html'
+          args: 'bundle utm.yaml -o docs/utm.html'
 
       - name: check result
         run: |
           ls -al
-          test -f utm.html || (echo "Missing utm.html from previous step." && exit 1)
-
-      - name: Checkout gh-pages
-        uses: actions/checkout@v2
-        with:
-          ref: gh-pages
+          test -f docs/utm.html || (echo "Missing utm.html from previous step." && exit 1)
           
       #- name: Commit changes
         #uses: EndBug/add-and-commit@v7
@@ -41,11 +36,21 @@ jobs:
          # branch: gh-pages
          # add: 'utm.html --force'
          # push: true
-      - name: Commit Changes
-        run: |
-          date > generated.txt
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add utm.html
-          git commit -m "Commit via GH action"
-          git push
+#      - name: Commit Changes
+#        run: |
+#          date > generated.txt
+#          git config user.name github-actions
+#          git config user.email github-actions@github.com
+#          git add utm.html
+#          git commit -m "Commit via GH action"
+#         git push
+      - name: push
+        uses: github-actions-x/commit@v2.8
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          push-branch: 'gh-pages'
+          commit-message: 'publish'
+          force-add: 'true'
+          files: docs/utm.html
+          name: commiter name
+          email: my.github@email.com 
