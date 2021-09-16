@@ -34,13 +34,11 @@ jobs:
          # branch: gh-pages
          # add: 'utm.html --force'
          # push: true
-      - name: push
-        uses: github-actions-x/commit@v2.8
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          push-branch: 'master'
-          commit-message: 'publish'
-          force-add: 'true'
-          files: '*.html'
-          name: commiter name
-          email: my.github@email.com 
+      - name: Commit Changes
+        run: |
+          date > generated.txt
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "generated"
+          git push
