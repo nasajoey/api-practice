@@ -1,6 +1,6 @@
 FROM shesse/redoc-cli:1.0.1
 
-COPY LICENSE README.md /
+COPY README.md /
 
 COPY generate-docs.sh /generate-docs.sh
 
