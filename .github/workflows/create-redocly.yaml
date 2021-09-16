@@ -6,7 +6,6 @@ on:
       - main  # Set a branch name to trigger deployment
     paths:
       - utm.yaml # only trigger off changes to this file
-  pull_request:
 
 jobs:
 
