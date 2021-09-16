@@ -12,8 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     name: Generate static HTML
     steps:
-      - name: Checkout
+      - name: Checkout main
         uses: actions/checkout@v2
+      
+
 
       # use the public name of the action
       - name: redoc-cli
@@ -25,7 +27,12 @@ jobs:
         run: |
           ls -al
           test -f utm.html || (echo "Missing utm.html from previous step." && exit 1)
-      
+
+      - name: Checkout gh-pages
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+          
       #- name: Commit changes
         #uses: EndBug/add-and-commit@v7
         #with:
@@ -39,6 +46,6 @@ jobs:
           date > generated.txt
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add .
-          git commit -m "generated"
+          git add utm.html
+          git commit -m "Commit via GH action"
           git push
