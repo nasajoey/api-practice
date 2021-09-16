@@ -34,11 +34,13 @@ jobs:
          # branch: gh-pages
          # add: 'utm.html --force'
          # push: true
-      - name: Commit changes
-        uses: EndBug/add-and-commit@v7
+      - name: push
+        uses: github-actions-x/commit@v2.8
         with:
-          author_name: Joseph Rios
-          author_email: mail@example.com
-          message: 'Automated commit via create-redocly'
-          add: '*.html'
-
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          push-branch: 'master'
+          commit-message: 'publish'
+          force-add: 'true'
+          files: '*.html'
+          name: commiter name
+          email: my.github@email.com 
