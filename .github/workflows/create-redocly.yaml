@@ -6,6 +6,7 @@ on:
       - main  # Set a branch name to trigger deployment
     paths:
       - utm.yaml # only trigger off changes to this file
+      - ./.github/workflows/create-redocly.yaml
 
 jobs:
 
@@ -33,6 +34,6 @@ jobs:
           committer_name: create-redocly-action
           message: 'Automated commit via create-redocly'
           branch: gh-pages
-          pull_strategy: '--rebase'
+          pull_strategy: '--no-ff'
           add: 'utm.html --force'
           push: true
