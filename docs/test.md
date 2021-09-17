@@ -1,0 +1,1 @@
+This is a target directory when the workflow for generating the HTML of the OpenAPI spec.  Essentially used as a temp directory during the HTML build process.  This dir could probably be eliminated by slight modifications in the workflow YAML, but haven't taken time to do so.
