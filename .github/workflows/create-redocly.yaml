@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main  # Set a branch name to trigger deployment
-    paths:
-      - utm.yaml # only trigger off changes to this file
+    paths:  # only trigger off changes to these files
+      - utm.yaml 
       - .github/workflows/create-redocly.yaml
 
 jobs:
@@ -14,28 +14,24 @@ jobs:
     runs-on: ubuntu-latest
     name: Generate static HTML
     steps:
+      # Checkout the repo into the running Docker
       - name: Checkout
         uses: actions/checkout@v2
 
-      # use the public name of the action
+      # Generate the HTML using an Action from the Marketplace
       - name: redoc-cli
         uses: seeebiii/redoc-cli-github-action@v10
         with:
           args: 'bundle utm.yaml -o docs/utm.html'
 
+      # Simple check that the file was generated
       - name: check result
         run: |
           ls -al
           test -f docs/utm.html || (echo "Missing utm.html from previous step." && exit 1)
-      
-  #    - name: Commit changes
-  #      uses: EndBug/add-and-commit@v7
-  #      with:
-  #        committer_name: create-redocly-action
-  #        message: 'Automated commit via create-redocly'
-  #        branch: gh-pages
-  #        add: 'utm.html --force'
-  #        push: true
+
+      # Get the file into the right branch/location for serving via GH Pages
+      # Again using an Action from Marketplace to accomplish
       - name: Deploy to GitHub Pages
         if: success()
         uses: crazy-max/ghaction-github-pages@v2
