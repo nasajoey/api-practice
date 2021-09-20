@@ -2,11 +2,11 @@ name: create-redocly
 
 on:
   push:
-    branches:
-      - main  # Set a branch name to trigger deployment
+    branches: # Set a branch name to trigger deployment
+      - main  
     paths:  # only trigger off changes to these files
       - utm.yaml 
-      - .github/workflows/create-redocly.yaml
+      - .github/workflows/process-openapi-checkin.yaml
 
 jobs:
 
