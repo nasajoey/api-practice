@@ -10,3 +10,7 @@ The goal of this exercise is to:
 This seems to be working.  The [HTML is located](https://github.com/nasajoey/api-practice/blob/gh-pages/utm.html) in the gh-pages branch of this repo.  The page is served [here](https://nasajoey.github.io/api-practice/utm.html) using GH Pages.
 
 The Action workflow is [here](https://github.com/nasajoey/api-practice/blob/main/.github/workflows/create-redocly.yaml).
+
+## Bonus!
+
+Added another workflow to validate the OpenAPI.  See workflows directory or Actions history.
