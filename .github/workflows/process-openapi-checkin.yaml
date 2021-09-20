@@ -10,9 +10,24 @@ on:
 
 jobs:
 
+  # Check that the OpenAPI file is valid.
+  validate_openapi:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+        
+    - name: Swagger Validator
+      uses: mbowman100/swagger-validator-action@master
+      with:
+        files: utm.yaml
+
+  # If the OpenAPI is valid, generate static HTML redoc
   generate_html:
     runs-on: ubuntu-latest
     name: Generate static HTML
+    needs: validate_openapi
     steps:
       # Checkout the repo into the running Docker
       - name: Checkout
