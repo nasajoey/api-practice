@@ -20,9 +20,9 @@ jobs:
     - name: Get list of files
       run:  |
         # Using github env (newline separated file list)
-        echo 'FILE_LIST<<EOF' >> $GITHUB_ENV
-        find . -type f -iname "utm.yaml" >> $GITHUB_ENV
-        echo 'EOF' >> $GITHUB_ENV
+        #echo 'FILE_LIST<<EOF' >> $GITHUB_ENV
+        #find . -type f -iname "utm.yaml" >> $GITHUB_ENV
+        #echo 'EOF' >> $GITHUB_ENV
 
         # Using step output (space separated file list)
         FILES="$(find . -type f -iname "utm.yaml")"
@@ -32,5 +32,5 @@ jobs:
       uses: mbowman100/swagger-validator-action@master
       if: env.FILE_COUNT != '0' # Comment out if you want it to fail if no files found
       with:
-        files: ${{ env.FILE_LIST }}
-        # files: ${{ steps.getfiles.outputs.file_list }} # For if you're using output
+        #files: ${{ env.FILE_LIST }}
+        files: ${{ steps.getfiles.outputs.file_list }} # For if you're using output
