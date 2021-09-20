@@ -97,7 +97,7 @@ components:
         String whose format matches a version-4 UUID according to RFC 4122.
       maxLength: 36
       minLength: 36
-      type: invalid-value-should-be-string-trying-to-trigger-tools-to-flag-spec-as-invalid
+      type: string
       format: uuid
       pattern: >-
         '^[0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-4[0-9a-fA-F]{3}\\-[8-b][0-9a-fA-F]{3}\\-[0-9a-fA-F]{12}$'
