@@ -13,6 +13,7 @@ jobs:
   # Check that the OpenAPI file is valid.
   validate_openapi:
     runs-on: ubuntu-latest
+    name: Validate OpenAPI
 
     steps:
     - name: Checkout
