@@ -35,7 +35,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          title: OpenAPI Validation Error ${{ env.GITHUB_WORKFLOW env.GITHUB_SHA }}
+          title: OpenAPI Validation Error ${{ env.GITHUB_WORKFLOW }}
 
   # If the OpenAPI is valid, generate static HTML redoc
   generate_html:
