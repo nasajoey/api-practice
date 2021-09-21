@@ -37,6 +37,8 @@ jobs:
       - uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          filename: .github/openapi-issue-template.md
 
   # If the OpenAPI is valid, generate static HTML redoc
   generate_html:
