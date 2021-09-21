@@ -31,11 +31,13 @@ jobs:
     needs: validate_openapi
     if: failure()
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      
       - uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          title: OpenAPI Validation Error ${{ env.GITHUB_WORKFLOW }}
           filename: .github/openapi-issue-template.md
 
   # If the OpenAPI is valid, generate static HTML redoc
