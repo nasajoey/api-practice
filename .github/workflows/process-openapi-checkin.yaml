@@ -23,6 +23,19 @@ jobs:
       uses: mbowman100/swagger-validator-action@master
       with:
         files: utm.yaml
+        
+  # Create an issue if the OpenAPI is not valid
+  create-issue-on-invaldity:
+    runs-on: ubuntu-latest
+    name: Create an Issue on Invalid API
+    needs: validate_openapi
+    if: failure()
+    steps:
+      - uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          title: OpenAPI Validation Error ${{ env.GITHUB_WORKFLOW env.GITHUB_SHA }}
 
   # If the OpenAPI is valid, generate static HTML redoc
   generate_html:
