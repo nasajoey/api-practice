@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Create an Issue on Invalid API
     needs: validate_openapi
-    if: failure()
+    if: failure() #Should only run if previous job failed.
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -44,7 +44,7 @@ jobs:
   generate_html:
     runs-on: ubuntu-latest
     name: Generate static HTML
-    needs: validate_openapi
+    needs: validate_openapi #Should only run if spec is valid
     steps:
       # Checkout the repo into the running Docker
       - name: Checkout
