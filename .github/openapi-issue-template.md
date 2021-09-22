@@ -1,5 +1,5 @@
 ---
-title: OpenAPI Invalid {{ date | date('YYYY-MM-DD at h:mm:ss.SS') }}
+title: OpenAPI Invalid {{ date | date('YYYY-MM-DD [at] h:mm:ss.SS') }}
 labels: bug
 ---
 
