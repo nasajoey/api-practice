@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.0.2
 info:
   title: UTM API (USS->DSS and USS->USS)
   version: 0.3.16
