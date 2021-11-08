@@ -21,8 +21,6 @@ security:
   - utm.conformance_monitoring_sa
   - utm.availability_arbitration
 
-cootie: this is an invalid field. expect validation error.
-
 tags:
 - name: Operational intent references
   description: |-
